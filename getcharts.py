@@ -7,7 +7,7 @@ URL = "https://www.officialcharts.com/charts/singles-chart/"
 page = requests.get(URL)
 soup = BeautifulSoup(page.content, "html.parser")
 
-sausage = ""
+ctitle = ""
 tables = soup.find_all('div', class_="track")
 
 for song in tables:
@@ -16,15 +16,11 @@ for song in tables:
     
     for title in titles:
         #print(title.text.strip())
-        sausage = title.text.strip()
+        ctitle = title.text.strip()
     for artist in artists:
-        #print(artist.text.strip())
-        sausage += " - " + artist.text.strip()
-        #videosSearch = VideosSearch(sausage, limit = 1)
-        #for video in videosSearch.result()['result']:
-        #    print(video['id'])
-        f.write(sausage + "\n")
-        print(sausage)
+        ctitle += " - " + artist.text.strip()
+        f.write(ctitle + "\n")
+        print(ctitle)
 
 #positions = soup.find_all('span', class_="position")
 #for position in positions:
